@@ -10,8 +10,6 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.jeansilva.mobile.pixelwolf_tmdb.R
 import com.jeansilva.mobile.pixelwolf_tmdb.model.Movie
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class MovieRecyclerAdapter(
     private val context : Context,
