@@ -1,0 +1,43 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:background="@color/black"
+                                                   android:layout_height="166dp">
+    <ImageView
+            android:layout_height="166dp"
+            android:id="@+id/movieImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent" android:layout_width="wrap_content"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/icywhite"
+            android:id="@+id/lblTitle" android:textSize="18sp"
+            android:textStyle="bold" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/lblRelease" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/movieImage" android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblRelease"
+            android:textColor="@color/icywhite"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.348"
+            app:layout_constraintStart_toEndOf="@+id/movieImage" android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp" android:textSize="16sp"/>
+    <TextView
+            android:text="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/icywhite"
+            android:id="@+id/lblVoteAverage" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" android:layout_marginRight="16dp" android:textSize="30sp"
+            app:layout_constraintVertical_bias="0.504"/>
+
+</android.support.constraint.ConstraintLayout>
