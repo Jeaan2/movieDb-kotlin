@@ -1,10 +1,13 @@
 package com.jeansilva.mobile.pixelwolf_tmdb.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SearchView
+import android.view.Menu
 import com.jeansilva.mobile.pixelwolf_tmdb.R
 import com.jeansilva.mobile.pixelwolf_tmdb.adapters.MovieRecyclerAdapter
 import com.jeansilva.mobile.pixelwolf_tmdb.model.Movie
@@ -16,6 +19,7 @@ import rx.schedulers.Schedulers
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: MovieRecyclerAdapter
+    lateinit var searchView: SearchView
     var movies = mutableListOf<Movie>()
     var page = 1
     var isBottomReached = false
@@ -23,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
 
         adapter = MovieRecyclerAdapter(this, movies) {
             movie ->
@@ -30,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("Movie", movie.id)
             startActivity(intent)
         }
+
 
         list_movie.adapter = adapter
 
@@ -51,8 +57,24 @@ class MainActivity : AppCompatActivity() {
         })
 
         callApi(page.toString())
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
 
-
+        val searchItem = menu?.findItem(R.id.action_search)
+        searchView = searchItem?.actionView as SearchView
+        searchView.queryHint = ("Buscar")
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+               adapter.filter.filter(newText)
+                return false
+            }
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapter.filter.filter(query)
+                return false
+            }
+        })
+        return true
     }
 
     private fun callApi(page: String)
