@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.design.widget.CollapsingToolbarLayout
+import android.support.v7.app.AlertDialog
 import android.view.View
 import com.bumptech.glide.Glide
 import com.jeansilva.mobile.pixelwolf_tmdb.R
@@ -18,6 +19,7 @@ import rx.schedulers.Schedulers
 class DetailsActivity : AppCompatActivity() {
 
     lateinit var movie: MovieDetail
+    lateinit var movieId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
         genre_list.layoutManager = layoutManager
 
 
-        val movieId = intent.getStringExtra("id")
+         movieId = intent.getStringExtra("id")
 
         callMovieDetailApi(movieId)
     }
@@ -44,6 +46,7 @@ class DetailsActivity : AppCompatActivity() {
                 movieDetail -> ongetMovieDetailsSuccess(movieDetail)
             }, {
                 e -> e.printStackTrace()
+                showDialog()
             })
     }
 
@@ -60,6 +63,27 @@ class DetailsActivity : AppCompatActivity() {
             .load(movieDetail?.getPosterUrl())
             .into(poster)
         (genre_list.adapter as GenreAdapter).addGenre(movieDetail?.genres)
+
+    }
+
+    fun showDialog() {
+
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Atenção")
+        builder.setMessage("Não foi posssível conectar ao servidor. Por favor, tente novamente")
+        builder.setPositiveButton("Tentar Novamente") {
+                dialog, which ->
+
+            callMovieDetailApi(movieId)
+        }
+
+        builder.setNegativeButton("Cancelar") {dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog : AlertDialog = builder.create()
+        dialog.show()
 
     }
 }
