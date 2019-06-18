@@ -2,6 +2,7 @@ package com.jeansilva.mobile.pixelwolf_tmdb.service
 
 import com.google.gson.GsonBuilder
 import com.jeansilva.mobile.pixelwolf_tmdb.model.Movie
+import com.jeansilva.mobile.pixelwolf_tmdb.model.MovieDetail
 import com.jeansilva.mobile.pixelwolf_tmdb.model.MovieResult
 import com.jeansilva.mobile.pixelwolf_tmdb.utils.API_KEY
 import com.jeansilva.mobile.pixelwolf_tmdb.utils.LANG
@@ -47,6 +48,24 @@ class MovieService  {
                     movie.voteAverage,
                     movie.releaseDate,
                     movie.posterPath
+                )
+            }
+    }
+
+    fun getMovieDetail(id: String) : Observable<MovieDetail> {
+        return service.getMovieDetails(id, API_KEY, LANG)
+            .map {  movie ->
+                MovieDetail(
+                    movie.posterPath,
+                    movie.budget,
+                    movie.genres,
+                    movie.overview,
+                    movie.releaseDate,
+                    movie.revenue,
+                    movie.runtime,
+                    movie.title,
+                    movie.voteAverage,
+                    movie.voteCount
                 )
             }
     }

@@ -16,6 +16,8 @@ interface TMDbApi {
                   @Query( "language") language : String) : Observable<MovieResult>
 
     @GET("movie/{movie_id}")
-    fun getMovieDetails(@Path("movie_id") id: String): Observable<MovieDetail>
+    fun getMovieDetails(@Path("movie_id") id: String,
+                        @Query("api_key") apiKey: String,
+                        @Query( "language") language : String): Observable<MovieDetail>
 }
 
