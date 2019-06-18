@@ -8,6 +8,11 @@
                 android:background="@android:color/black"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
 
     <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -32,73 +37,110 @@
                         android:layout_height="wrap_content">
 
                     <TextView
-                            android:id="@+id/rate"
+                            android:id="@+id/vote_average"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/icywhite"
-                            android:textSize="40sp"
+                            android:textSize="60sp"
                             tools:text="7.3" />
-
-                    <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_toRightOf="@+id/rate"
-                            android:layout_toEndOf="@+id/rate"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="10dp"
-                            android:orientation="vertical"
-                            android:layout_marginLeft="10dp">
-
-                        <TextView
-                                android:id="@+id/vote_count"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/icywhite"
-                                tools:text="2930"/>
-
-                    </LinearLayout>
                 </RelativeLayout>
 
                 <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         android:layout_weight="1">
-
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_gravity="end">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                               android:src="@drawable/ic_tempo"
+                               android:tint="@color/icywhite"
+                                   android:layout_margin="8dp"/>
                     <TextView
                             android:id="@+id/runtime"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:gravity="end"
-                            android:textColor="@color/icywhite"
-                            tools:text="120 Minutes"/>
+                            android:textColor="@color/icywhite"/>
+                    </LinearLayout>
 
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_gravity="end">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_data"
+                                    android:tint="@color/icywhite"
+                                   android:layout_margin="8dp"/>
                     <TextView
                             android:id="@+id/release_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:textColor="@color/icywhite"
-                            android:gravity="end"
-                            tools:text="22 Nov 2017"/>
+                            android:gravity="end"/>
+                    </LinearLayout>
 
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                    android:layout_gravity="end">
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                   android:src="@drawable/ic_receita"
+                                   android:tint="@color/icywhite"
+                                   android:layout_margin="8dp"/>
+                        <TextView
+                                android:id="@+id/revenue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:textColor="@color/icywhite"
+                                android:gravity="end"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_gravity="end">
+
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                   android:src="@drawable/ic_despesa"
+                                   android:tint="@color/icywhite"
+                                   android:layout_margin="8dp"/>
+                    <TextView
+                            android:id="@+id/budget"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/icywhite"
+                            android:gravity="end"/>
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                     android:id="@+id/genre_list"
-                    android:background="@color/black"
+                    android:background="@android:color/black"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             <TextView
+                    android:id="@+id/movie_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/icywhite"
                     android:layout_marginTop="10dp"
                     android:paddingBottom="5dp"
-                    android:text="que isso"
                     android:textSize="18sp" />
 
             <View
@@ -112,7 +154,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="AAAaajiasjiajiasofhwaofihwofiawofihawofimcaehgiauohfiaweuofwioufhoawiuefhi"
                     android:textSize="16sp" />
 
         </LinearLayout>

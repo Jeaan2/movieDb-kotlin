@@ -22,6 +22,6 @@ data class MovieDetail(
 
     fun getPosterUrl(): String
     {
-        return "https://image.tmdb.org/t/p/w154$posterPath"
+        return "https://image.tmdb.org/t/p/w780$posterPath"
     }
 }
