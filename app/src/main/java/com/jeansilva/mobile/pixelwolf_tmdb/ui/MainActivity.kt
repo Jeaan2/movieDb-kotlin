@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
@@ -87,8 +88,32 @@ class MainActivity : AppCompatActivity() {
                 movies.add(movie)
             },{
                     e -> e.printStackTrace()
+                showDialog()
+
             }, {
                 adapter.notifyDataSetChanged()
             })
     }
+
+    fun showDialog() {
+
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Atenção")
+        builder.setMessage("Não foi posssível conectar ao servidor. Por favor, tente novamente")
+        builder.setPositiveButton("Tentar Novamente") {
+            dialog, which ->
+
+            callApi("1")
+        }
+
+        builder.setNegativeButton("Cancelar") {dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog : AlertDialog = builder.create()
+        dialog.show()
+
+    }
+
 }
