@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         adapter = MovieRecyclerAdapter(this, movies) {
             movie ->
             val intent = Intent(this, DetailsActivity::class.java)
-            intent.putExtra("Movie", movie.id)
+            intent.putExtra("id", movie.id)
             startActivity(intent)
         }
 
