@@ -140,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/icywhite"
                     android:layout_marginTop="10dp"
+                    android:text="@string/movie_description"
                     android:paddingBottom="5dp"
                     android:textSize="18sp" />
 

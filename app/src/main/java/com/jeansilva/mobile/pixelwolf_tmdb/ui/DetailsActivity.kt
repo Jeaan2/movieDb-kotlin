@@ -3,15 +3,14 @@ package com.jeansilva.mobile.pixelwolf_tmdb.ui
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.design.widget.CollapsingToolbarLayout
 import android.view.View
 import com.bumptech.glide.Glide
 import com.jeansilva.mobile.pixelwolf_tmdb.R
 import com.jeansilva.mobile.pixelwolf_tmdb.adapters.GenreAdapter
-import com.jeansilva.mobile.pixelwolf_tmdb.model.Movie
 import com.jeansilva.mobile.pixelwolf_tmdb.model.MovieDetail
 import com.jeansilva.mobile.pixelwolf_tmdb.service.MovieService
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_details.view.*
 import kotlinx.android.synthetic.main.movie_info.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -24,8 +23,9 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
         setSupportActionBar(appbar)
+        collapsing.setExpandedTitleMargin(50, 50, 250, 50)
 
-        genre_list.adapter = GenreAdapter()
+            genre_list.adapter = GenreAdapter()
         val layoutManager = LinearLayoutManager(this,  LinearLayoutManager.HORIZONTAL, false)
         genre_list.layoutManager = layoutManager
 
@@ -49,7 +49,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun ongetMovieDetailsSuccess(movieDetail: MovieDetail?) {
         loading.visibility = View.GONE
-        movie_title?.text = movieDetail?.title
+        collapsing.title = movieDetail?.title
         overview?.text = movieDetail?.overview
         vote_average?.text = movieDetail?.voteAverage.toString()
         release_date?.text = movieDetail?.releaseDate
