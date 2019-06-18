@@ -3,6 +3,7 @@ package com.jeansilva.mobile.pixelwolf_tmdb.ui
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.jeansilva.mobile.pixelwolf_tmdb.R
+import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
 
