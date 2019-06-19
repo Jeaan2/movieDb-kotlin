@@ -1,6 +1,6 @@
 # Movies - Kotlin 
 
-Movies é um aplicativo simples consumidor da API [MovieDb](https://www.themoviedb.org/?language=pt-BR),  desenvolvido exclusivamente para o processo celetivo da [PixelWolf](https://pixelwolf.com.br).
+Movies é um aplicativo simples consumidor da API [MovieDb](https://www.themoviedb.org/?language=pt-BR),  desenvolvido exclusivamente para o processo seletivo da [PixelWolf](https://pixelwolf.com.br).
 
 # Tecnologias utilizadas
 
